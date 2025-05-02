@@ -4,7 +4,7 @@ var request = require('request');
 var colors = require("colors");
 var geoip = require('geoip-lite');
 
-var APPID="425f301ab92c67d8336f2dbb5f82c4e1";
+var APPID = require("./serviceAccount.json").APPID;
 
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
