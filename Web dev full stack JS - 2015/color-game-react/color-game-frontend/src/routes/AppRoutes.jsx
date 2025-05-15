@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import { useAuth } from "../contexts/auth/auth";
 import Home from "../pages/Home/Home";
@@ -11,9 +11,13 @@ function AppRoutes() {
 
   return (
     <Routes>
-      {/* Public */}
-      <Route path="/" element={<Home />} />
-      <Route path="/signup" element={<SignUp />} />
+      {/* Public, but redirect if logged in */}
+      <Route path="/" element={<Home/>}/>
+
+      <Route
+        path="/signup"
+        element={user ? <Navigate to="/game" replace /> : <SignUp />}
+      />
 
       {/* Protected */}
       <Route
